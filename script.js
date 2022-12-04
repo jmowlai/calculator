@@ -58,9 +58,7 @@ oppButtons.forEach((button) => {
 
 equalButton.forEach((button) => {
     button.addEventListener('click', () => {
-        displayCache.textContent = operate(operator, Number(displayCache.textContent), Number(display.textContent));
-        display.textContent = undefined;
-        operator = undefined;
+        evaluate();
     })
 })
 
@@ -93,6 +91,18 @@ deleteButton.forEach((button) => {
         deleteChar();
     })
 })
+
+function evaluate() {
+    if (!(displayCache.textContent == '' || operator == undefined)) {
+        displayCache.textContent = operate(operator, Number(displayCache.textContent), Number(display.textContent));
+        display.textContent = undefined;
+        operator = undefined;
+    }
+    else {
+        displayCache.textContent = display.textContent;
+        display.textContent = undefined;
+    }
+}
 
 function deleteChar() {
     display.textContent = display.textContent.slice(0, -1);
