@@ -96,7 +96,7 @@ function operateButton(button) {
         display.textContent = undefined;
     }
     else if (!operator) {
-        if (button.value != '/') {
+        if (!(button.value == '/' || button.value == '*')) {
             cache = Number(operate(button.value, Number(displayCache.textContent), Number(display.textContent)));
             operator = button.value;
             display.textContent = undefined;
