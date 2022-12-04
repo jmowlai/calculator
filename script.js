@@ -30,8 +30,8 @@ const operate = function (func, a, b) {
 };
 
 var display = document.getElementById('display');
-var displayFirstNum = document.getElementById('displayFirstNum');
-var firstNum = undefined;
+var displayCache = document.getElementById('displayCache');
+var cache = undefined;
 var secondNum = undefined;
 var operator = undefined;
 
@@ -56,7 +56,7 @@ oppButtons.forEach((button) => {
 
 equalButton.forEach((button) => {
     button.addEventListener('click', () => {
-        displayFirstNum.textContent = operate(operator, Number(displayFirstNum.textContent), Number(display.textContent));
+        displayCache.textContent = operate(operator, Number(displayCache.textContent), Number(display.textContent));
         display.textContent = undefined;
         operator = undefined;
     })
@@ -90,33 +90,33 @@ function appendDisplay(e) {
 }
 
 function operateButton(button) {
-    if (!displayFirstNum.textContent) { 
+    if (!displayCache.textContent) { 
         operator = button.value;
-        displayFirstNum.textContent = Number(display.textContent);
+        displayCache.textContent = Number(display.textContent);
         display.textContent = undefined;
     }
     else if (!operator) {
         if (button.value != '/') {
-            firstNum = Number(operate(button.value, Number(displayFirstNum.textContent), Number(display.textContent)));
+            cache = Number(operate(button.value, Number(displayCache.textContent), Number(display.textContent)));
             operator = button.value;
             display.textContent = undefined;
-            displayFirstNum.textContent = firstNum;
+            displayCache.textContent = cache;
         }
         else {
             operator = button.value;
         }
     }
     else {
-        firstNum = Number(operate(operator, Number(displayFirstNum.textContent), Number(display.textContent)));
+        cache = Number(operate(operator, Number(displayCache.textContent), Number(display.textContent)));
         operator = button.value;
         display.textContent = undefined;
-        displayFirstNum.textContent = firstNum;
+        displayCache.textContent = cache;
     }
 }
 
 function allClear() {
     display.textContent = undefined;
-    displayFirstNum.textContent = undefined;
+    displayCache.textContent = undefined;
     operator = undefined;
 } 
 
