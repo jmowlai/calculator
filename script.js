@@ -40,6 +40,7 @@ const oppButtons = document.querySelectorAll('button.oppButton');
 const equalButton = document.querySelectorAll('button.equalButton');
 const allClearButton = document.querySelectorAll('button.allClearButton');
 const clearButton = document.querySelectorAll('button.clearButton');
+const changeSignButton = document.querySelectorAll('button.changeSignButton');
 
 arithButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -73,6 +74,17 @@ clearButton.forEach((button) => {
     })
 })
 
+changeSignButton.forEach((button) => {
+    button.addEventListener('click', () => {
+        if (/-\w*/i.test(display.textContent)) {
+            display.textContent = display.textContent.replace(/^-/gi, "");
+        }
+        else {
+            display.textContent = "-"+display.textContent;
+        }
+    })
+})
+
 function appendDisplay(e) {
     display.textContent += e;
 }
@@ -84,10 +96,15 @@ function operateButton(button) {
         display.textContent = undefined;
     }
     else if (!operator) {
-        firstNum = Number(operate(button.value, Number(displayFirstNum.textContent), Number(display.textContent)));
-        operator = button.value;
-        display.textContent = undefined;
-        displayFirstNum.textContent = firstNum;
+        if (button.value != '/') {
+            firstNum = Number(operate(button.value, Number(displayFirstNum.textContent), Number(display.textContent)));
+            operator = button.value;
+            display.textContent = undefined;
+            displayFirstNum.textContent = firstNum;
+        }
+        else {
+            operator = button.value;
+        }
     }
     else {
         firstNum = Number(operate(operator, Number(displayFirstNum.textContent), Number(display.textContent)));
