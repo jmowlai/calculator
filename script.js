@@ -38,7 +38,7 @@ var operator = undefined;
 const arithButtons = document.querySelectorAll('button.arithButton');
 const oppButtons = document.querySelectorAll('button.oppButton');
 const equalButton = document.querySelectorAll('button.equalButton');
-const clearButton = document.querySelectorAll('button.clearButton');
+const allClearButton = document.querySelectorAll('button.allClearButton');
 
 arithButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -60,9 +60,9 @@ equalButton.forEach((button) => {
     })
 })
 
-clearButton.forEach((button) => {
+allClearButton.forEach((button) => {
     button.addEventListener('click', () => {
-        clear();
+        allClear();
     })
 })
 
@@ -90,7 +90,7 @@ function operateButton(button) {
     }
 }
 
-function clear() {
+function allClear() {
     display.textContent = undefined;
     displayFirstNum.textContent = undefined;
     operator = undefined;
