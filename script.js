@@ -76,14 +76,18 @@ clearButton.forEach((button) => {
 
 changeSignButton.forEach((button) => {
     button.addEventListener('click', () => {
-        if (/-\w*/i.test(display.textContent)) {
-            display.textContent = display.textContent.replace(/^-/gi, "");
-        }
-        else {
-            display.textContent = "-"+display.textContent;
-        }
+        changeSign();
     })
 })
+
+function changeSign() {
+    if (/-\w*/i.test(display.textContent)) {
+        display.textContent = display.textContent.replace(/^-/gi, "");
+    }
+    else {
+        display.textContent = "-"+display.textContent;
+    }
+}
 
 function appendDisplay(e) {
     display.textContent += e;
