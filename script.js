@@ -42,6 +42,7 @@ const allClearButton = document.querySelectorAll('button.allClearButton');
 const clearButton = document.querySelectorAll('button.clearButton');
 const changeSignButton = document.querySelectorAll('button.changeSignButton');
 const decimalButton = document.querySelectorAll('button.decimalButton');
+const deleteButton = document.querySelectorAll('button.deleteButton');
 
 arithButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -86,6 +87,16 @@ decimalButton.forEach((button) => {
         addDecimal();
     })
 })
+
+deleteButton.forEach((button) => {
+    button.addEventListener('click', () => {
+        deleteChar();
+    })
+})
+
+function deleteChar() {
+    display.textContent = display.textContent.slice(0, -1);
+}
 
 function addDecimal() {
     if (!(/\./i.test(display.textContent))) {
