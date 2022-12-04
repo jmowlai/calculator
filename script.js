@@ -30,12 +30,15 @@ const operate = function (func, a, b) {
 };
 
 var display = document.getElementById('display');
+var displayFirstNum = document.getElementById('displayFirstNum');
 var firstNum = null;
 var secondNum = null;
 var operator = null;
 
 const arithButtons = document.querySelectorAll('button.arithButton');
 const oppButtons = document.querySelectorAll('button.oppButton');
+const equalButton = document.querySelectorAll('button.equalButton');
+const clearButton = document.querySelectorAll('button.clearButton');
 
 arithButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -45,14 +48,28 @@ arithButtons.forEach((button) => {
 
 function appendDisplay(e) {
     display.textContent += e;
-    console.log(e)
 }
 
 oppButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        firstNum = Number(display.textContent);
-        operator = button.value;
-        console.log(firstNum);
-        console.log(button.value);
+        if (!displayFirstNum.textContent) { 
+            operator = button.value;
+            displayFirstNum.textContent = Number(display.textContent);
+            display.textContent = undefined;
+        }
+        else {
+            firstNum = Number(operate(operator, Number(displayFirstNum.textContent), Number(display.textContent)));
+            operator = button.value;
+            display.textContent = undefined;
+            displayFirstNum.textContent = firstNum;
+        }
+    })
+});
+
+clearButton.forEach((button) => {
+    button.addEventListener('click', () => {
+        display.textContent = undefined;
+        displayFirstNum.textContent = undefined;
+        operator = undefined;
     })
 })
