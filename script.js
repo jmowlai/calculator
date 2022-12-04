@@ -39,6 +39,7 @@ const arithButtons = document.querySelectorAll('button.arithButton');
 const oppButtons = document.querySelectorAll('button.oppButton');
 const equalButton = document.querySelectorAll('button.equalButton');
 const allClearButton = document.querySelectorAll('button.allClearButton');
+const clearButton = document.querySelectorAll('button.clearButton');
 
 arithButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -63,6 +64,12 @@ equalButton.forEach((button) => {
 allClearButton.forEach((button) => {
     button.addEventListener('click', () => {
         allClear();
+    })
+})
+
+clearButton.forEach((button) => {
+    button.addEventListener('click', () => {
+        clear();
     })
 })
 
@@ -95,3 +102,8 @@ function allClear() {
     displayFirstNum.textContent = undefined;
     operator = undefined;
 } 
+
+function clear () {
+    display.textContent = undefined;
+    operator = undefined;
+}
