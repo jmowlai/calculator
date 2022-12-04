@@ -1,17 +1,17 @@
 const add = function (a, b) {
-    return a + b;
+    return Math.round(((a + b) + Number.EPSILON) * 1000) / 1000;
 };
 
 const subtract = function (a, b) {
-    return a - b;
+    return Math.round(((a - b) + Number.EPSILON) * 1000) / 1000;
 };
 
 const multiply = function (a, b) {
-    return a * b;
+    return Math.round(((a * b) + Number.EPSILON) * 1000) / 1000;
 };
 
 const divide = function (a, b) {
-    return b != 0 ? a/b : NaN;
+    return b != 0 ? Math.round(((a/b) + Number.EPSILON) * 1000) / 1000 : NaN;
 };
 
 const operate = function (func, a, b) {
