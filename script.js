@@ -83,14 +83,18 @@ changeSignButton.forEach((button) => {
 
 decimalButton.forEach((button) => {
     button.addEventListener('click', () => {
-        if (!(/\./i.test(display.textContent))) {
-            display.textContent += '.';
-        }
-        else if (/\.$/.test(display.textContent)) {
-            display.textContent = display.textContent.replace(/\.$/gi, "");
-        };
+        addDecimal();
     })
 })
+
+function addDecimal() {
+    if (!(/\./i.test(display.textContent))) {
+        display.textContent += '.';
+    }
+    else if (/\.$/.test(display.textContent)) {
+        display.textContent = display.textContent.replace(/\.$/gi, "");
+    };
+}
 
 function changeSign() {
     if (/-\w*/i.test(display.textContent)) {
