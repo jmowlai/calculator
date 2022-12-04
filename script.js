@@ -41,6 +41,7 @@ const equalButton = document.querySelectorAll('button.equalButton');
 const allClearButton = document.querySelectorAll('button.allClearButton');
 const clearButton = document.querySelectorAll('button.clearButton');
 const changeSignButton = document.querySelectorAll('button.changeSignButton');
+const decimalButton = document.querySelectorAll('button.decimalButton');
 
 arithButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -77,6 +78,17 @@ clearButton.forEach((button) => {
 changeSignButton.forEach((button) => {
     button.addEventListener('click', () => {
         changeSign();
+    })
+})
+
+decimalButton.forEach((button) => {
+    button.addEventListener('click', () => {
+        if (!(/\./i.test(display.textContent))) {
+            display.textContent += '.';
+        }
+        else if (/\.$/.test(display.textContent)) {
+            display.textContent = display.textContent.replace(/\.$/gi, "");
+        };
     })
 })
 
